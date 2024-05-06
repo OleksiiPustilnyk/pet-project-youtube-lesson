@@ -27,6 +27,10 @@
     margin-right: 0.5rem;
 }
 
+.post-btns {
+    display: flex;
+}
+
 .post-enter {
     transform: translateX(-350px);
 }
