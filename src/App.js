@@ -11,6 +11,7 @@ import MyModal from './components/UI/modal/MyModal.jsx'
 import MyButton from './components/UI/button/MyButton.jsx'
 
 import '../src/styles/App.css'
+import Loader from './components/UI/loader/Loader.jsx'
 
 function App() {
     const [posts, setPosts] = useState([])
@@ -56,7 +57,15 @@ function App() {
             <PostFilter filter={filter} setFilter={setFilter} />
 
             {isPostsLoading ? (
-                <h1>Идет загрузка...</h1>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: 50,
+                    }}
+                >
+                    <Loader />
+                </div>
             ) : (
                 <PostList
                     remove={removePost}
