@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { usePosts } from './hooks/usePost.js'
+
+import PostService from './API/PostService.js'
 
 import PostList from './components/PostList.jsx'
 import PostForm from './components/PostForm.jsx'
 import PostFilter from './components/PostFilter.jsx'
 
-import '../src/styles/App.css'
 import MyModal from './components/UI/modal/MyModal.jsx'
 import MyButton from './components/UI/button/MyButton.jsx'
-import { usePosts } from './hooks/usePost.js'
-import axios from 'axios'
+
+import '../src/styles/App.css'
 
 function App() {
     const [posts, setPosts] = useState([])
@@ -26,10 +28,8 @@ function App() {
     }
 
     async function fetchPosts() {
-        const response = await axios.get(
-            'https://jsonplaceholder.typicode.com/posts'
-        )
-        setPosts(response.data)
+        const posts = await PostService.getAll()
+        setPosts(posts)
     }
 
     const removePost = (post) => {
